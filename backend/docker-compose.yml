@@ -1,0 +1,20 @@
+services:
+  database:
+    image: "postgres:13.2"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  api:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@database:5432/postgres
+      SCHEMA_NAME: public
+    depends_on:
+      - database
