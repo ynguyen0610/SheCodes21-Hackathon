@@ -1,4 +1,4 @@
-# SheCodes21
+# SheCodes2021
 
 A medical website built during SheCodes Vietnam Hackathon 2021.
 
